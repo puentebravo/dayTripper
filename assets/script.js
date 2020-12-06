@@ -8,16 +8,34 @@ $(document).ready(function () {
     })
   );
 
+  function getSched() {
+    $(".hour").each(function () {
+      var hHour = $(this).text();
+      var storedText = localStorage.getItem(hHour);
+
+      if (storedText !== null) {
+        $(this).siblings("textarea").val(storedText);
+      }
+    });
+  }
+
   function timingEl() {
     var hourEl = luxon.DateTime.local().toLocaleString({
       hour: "2-digit",
-      minute: "2-digit",
       hour12: false,
     });
     var formHour = parseInt(hourEl[0] + hourEl[1]);
     console.log(hourEl);
+    var calHour = parseInt($(".hour").text());
+
+    if (calHour < formHour) {
+      $(".time-block").addClass(".present");
+    }
+    console.log(formHour);
+    console.log(calHour);
   }
 
+  timingEl();
   hrsArray = [
     "09:00",
     "10:00",
@@ -42,16 +60,15 @@ $(document).ready(function () {
   //     newRow.append(newHour);
   //     newHour.text(hrsArray[i]);
   //     newRow.append(newTextEl);
-  //     newTextEl.attr("id", hrsArray[i]);
   //     newRow.append(newButton);
   //     newButton.append(newIcon);
   //   }
-
-  console.log($("textarea").val());
 
   $(".saveBtn").click(function () {
     var taskTxt = $(this).siblings("textarea").val();
     var taskKey = $(this).siblings(".hour").text();
     localStorage.setItem(taskKey, taskTxt);
   });
+
+  getSched();
 });
