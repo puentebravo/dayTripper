@@ -29,7 +29,16 @@ $(document).ready(function () {
     var calHour = parseInt($(".hour").text());
 
     if (calHour < formHour) {
-      $(".time-block").addClass(".present");
+      $(".time-block").addClass("past");
+      console.log("hello, past");
+    }
+    if (calHour === formHour) {
+      $(".time-block").addClass("present");
+      console.log("hello present");
+    }
+    if (calHour > formHour) {
+      console.log("hello future");
+      $(".time-block").addClass("future");
     }
     console.log(formHour);
     console.log(calHour);
@@ -48,21 +57,22 @@ $(document).ready(function () {
     "17:00",
   ];
 
-  //   var newRow = $("<div>", { class: "row time-block" });
-  //   var newHour = $("<div>", { class: "col-1 hour" });
-  //   var newTextEl = $("<textarea>", { class: "col-10" });
-  //   var newButton = $("<button>", { class: "col-1 saveBtn" });
-  //   var newIcon = $("<i>", { class: "fa fa-save" });
+  var newRow = $("<div>", { class: "row time-block" });
+  var newHour = $("<div>", { class: "col-1 hour" });
+  var newTextEl = $("<textarea>", { class: "col-10" });
+  var newButton = $("<button>", { class: "col-1 saveBtn" });
+  var newIcon = $("<i>", { class: "fa fa-save" });
 
-  //   for (var i = 0; i < hrsArray.length; i++) {
-  //     console.log(hrsArray[i]);
-  //     $(".container").append(newRow);
-  //     newRow.append(newHour);
-  //     newHour.text(hrsArray[i]);
-  //     newRow.append(newTextEl);
-  //     newRow.append(newButton);
-  //     newButton.append(newIcon);
-  //   }
+  for (var i = 0; i < hrsArray.length; i++) {
+    console.log(hrsArray[i]);
+    $(".container").append(newRow);
+
+    newRow.append(newHour);
+    newHour.text(hrsArray[i]);
+    newRow.append(newTextEl);
+    newRow.append(newButton);
+    newButton.append(newIcon);
+  }
 
   $(".saveBtn").click(function () {
     var taskTxt = $(this).siblings("textarea").val();
