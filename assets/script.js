@@ -20,31 +20,34 @@ $(document).ready(function () {
   }
 
   function timingEl() {
-    var hourEl = luxon.DateTime.local().toLocaleString({
-      hour: "2-digit",
-      hour12: false,
-    });
-    var formHour = parseInt(hourEl[0] + hourEl[1]);
-    console.log(hourEl);
-    var calHour = parseInt($(".hour").text());
+    // var hourEl = luxon.DateTime.local().toLocaleString({
+    //   hour: "2-digit",
+    //   hour12: false,
+    // });
 
-    if (calHour < formHour) {
-      $(".time-block").addClass("past");
-      console.log("hello, past");
-    }
-    if (calHour === formHour) {
-      $(".time-block").addClass("present");
-      console.log("hello present");
-    }
-    if (calHour > formHour) {
-      console.log("hello future");
-      $(".time-block").addClass("future");
-    }
-    console.log(formHour);
-    console.log(calHour);
+    // var formHour = parseInt(hourEl[0] + hourEl[1]);
+    // console.log(hourEl);
+
+    $(".hour").each(function () {
+      var rowTime = parseInt($(this).text());
+
+      if (rowTime < 16) {
+        $(this).siblings("textarea").addClass("past");
+        console.log(rowTime);
+        console.log("hello, past");
+      } else if (rowTime === 16) {
+        $(this).siblings("textarea").removeClass("past");
+        $(this).siblings("textarea").addClass("present");
+        console.log("hello present");
+      } else {
+        $(this).siblings("textarea").removeClass("past");
+        $(this).siblings("textarea").removeClass("present");
+        $(this).siblings("textarea").addClass("future");
+        console.log("hello future");
+      }
+    });
   }
 
-  timingEl();
   hrsArray = [
     "09:00",
     "10:00",
@@ -64,9 +67,7 @@ $(document).ready(function () {
   var newIcon = $("<i>", { class: "fa fa-save" });
 
   for (var i = 0; i < hrsArray.length; i++) {
-    console.log(hrsArray[i]);
     $(".container").append(newRow);
-
     newRow.append(newHour);
     newHour.text(hrsArray[i]);
     newRow.append(newTextEl);
@@ -79,6 +80,6 @@ $(document).ready(function () {
     var taskKey = $(this).siblings(".hour").text();
     localStorage.setItem(taskKey, taskTxt);
   });
-
+  timingEl();
   getSched();
 });
