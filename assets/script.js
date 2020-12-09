@@ -1,5 +1,6 @@
 $(document).ready(function () {
   //Displays current date/time at top of page.
+
   $("#currentDay").text(
     luxon.DateTime.local().toLocaleString({
       weekday: "long",
@@ -7,6 +8,8 @@ $(document).ready(function () {
       day: "2-digit",
     })
   );
+
+  //Grabs stored data for each row
 
   function getSched() {
     $(".hour").each(function () {
@@ -18,6 +21,8 @@ $(document).ready(function () {
       }
     });
   }
+
+  //Sets background color for each time block by comparing it with local time
 
   function timingEl() {
     var hourEl = luxon.DateTime.local().toLocaleString({
@@ -52,6 +57,8 @@ $(document).ready(function () {
     "16:00",
     "17:00",
   ];
+
+  // Renders Rows
 
   for (var i = 0; i < hrsArray.length; i++) {
     var newRow = $("<div>", { class: "row time-block" });
