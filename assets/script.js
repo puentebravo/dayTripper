@@ -26,14 +26,14 @@ $(document).ready(function () {
     });
 
     // var formHour = parseInt(hourEl[0] + hourEl[1]);
-    // console.log(hourEl);
+    console.log(hourEl);
 
     $(".hour").each(function () {
       var rowTime = parseInt($(this).text());
 
       if (rowTime < hourEl) {
         $(this).siblings("textarea").addClass("past");
-      } else if (rowTime === hourEl) {
+      } else if (rowTime == hourEl) {
         $(this).siblings("textarea").removeClass("past");
         $(this).siblings("textarea").addClass("present");
       } else {
