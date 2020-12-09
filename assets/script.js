@@ -25,9 +25,6 @@ $(document).ready(function () {
       hour12: false,
     });
 
-    // var formHour = parseInt(hourEl[0] + hourEl[1]);
-    console.log(hourEl);
-
     $(".hour").each(function () {
       var rowTime = parseInt($(this).text());
 
