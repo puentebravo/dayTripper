@@ -20,10 +20,10 @@ $(document).ready(function () {
   }
 
   function timingEl() {
-    // var hourEl = luxon.DateTime.local().toLocaleString({
-    //   hour: "2-digit",
-    //   hour12: false,
-    // });
+    var hourEl = luxon.DateTime.local().toLocaleString({
+      hour: "2-digit",
+      hour12: false,
+    });
 
     // var formHour = parseInt(hourEl[0] + hourEl[1]);
     // console.log(hourEl);
@@ -31,19 +31,15 @@ $(document).ready(function () {
     $(".hour").each(function () {
       var rowTime = parseInt($(this).text());
 
-      if (rowTime < 16) {
+      if (rowTime < hourEl) {
         $(this).siblings("textarea").addClass("past");
-        console.log(rowTime);
-        console.log("hello, past");
-      } else if (rowTime === 16) {
+      } else if (rowTime === hourEl) {
         $(this).siblings("textarea").removeClass("past");
         $(this).siblings("textarea").addClass("present");
-        console.log("hello present");
       } else {
         $(this).siblings("textarea").removeClass("past");
         $(this).siblings("textarea").removeClass("present");
         $(this).siblings("textarea").addClass("future");
-        console.log("hello future");
       }
     });
   }
@@ -60,13 +56,12 @@ $(document).ready(function () {
     "17:00",
   ];
 
-  var newRow = $("<div>", { class: "row time-block" });
-  var newHour = $("<div>", { class: "col-1 hour" });
-  var newTextEl = $("<textarea>", { class: "col-10" });
-  var newButton = $("<button>", { class: "col-1 saveBtn" });
-  var newIcon = $("<i>", { class: "fa fa-save" });
-
   for (var i = 0; i < hrsArray.length; i++) {
+    var newRow = $("<div>", { class: "row time-block" });
+    var newHour = $("<div>", { class: "col-1 hour" });
+    var newTextEl = $("<textarea>", { class: "col-10" });
+    var newButton = $("<button>", { class: "col-1 saveBtn" });
+    var newIcon = $("<i>", { class: "fa fa-save" });
     $(".container").append(newRow);
     newRow.append(newHour);
     newHour.text(hrsArray[i]);
