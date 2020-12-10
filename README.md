@@ -22,6 +22,8 @@ DayTripper is available to clone for personal use, or for deployment to any loca
 
 ## Link to Deployed Site
 
+[Deployed App](https://puentebravo.github.io/dayTripper/)
+
 ## Credits
 
 Special thanks go to Rahat Chowdhury and Andrew Bautista of the Columbia Engineering coding bootcamp for their invaluable assistance with portions of this project. Profuse thanks are due to my study group, whose peer review, troubleshooting, and combined efforts were crucial in developing parts of this project's code base, and were crucial to its success.
