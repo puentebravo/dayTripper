@@ -20,6 +20,8 @@ DayTripper is available to clone for personal use, or for deployment to any loca
 
 ## Site Demo
 
+![Demo](assets/daytripperdemo.gif)
+
 ## Link to Deployed Site
 
 [Deployed App](https://puentebravo.github.io/dayTripper/)
