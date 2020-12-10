@@ -20,7 +20,7 @@ DayTripper is available to clone for personal use, or for deployment to any loca
 
 ## Site Demo
 
-![Demo](./assets/dayTripperdemo.gif)
+![App Demo](./assets/dayTripperdemo.gif)
 
 ## Link to Deployed Site
 
